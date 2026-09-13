@@ -2,7 +2,9 @@
 
 A research-engineering project that studies how pre-close auction information can be used to forecast the final Nasdaq closing-cross price.
 
-The project is structured around a realistic quantitative-research workflow: inspect the market-data schema, build a leakage-safe target, audit data quality, engineer economically interpretable auction features, compare simple and nonlinear models, and evaluate the final specification on a chronological holdout.
+The project follows a realistic quantitative-research workflow: inspect the market-data schema, build a leakage-safe target, audit data quality, engineer interpretable auction features, compare simple and nonlinear models, and evaluate the final specification on a chronological holdout.
+
+**[Open the research notebook](notebooks/closing_auction_forecasting.ipynb)**
 
 ## What this project demonstrates
 
@@ -14,33 +16,6 @@ The project is structured around a realistic quantitative-research workflow: ins
 - Linear regression, Ridge, and XGBoost model comparison
 - Validation-first model selection with a frozen final test set
 - Robustness checks by trading date and held-out error distribution
-
-## Repository structure
-
-```text
-.
-├── notebooks/
-│   └── closing_auction_forecasting.ipynb
-├── data/
-│   └── README.md
-├── requirements.txt
-├── .gitignore
-└── README.md
-```
-
-## Data
-
-The source dataset used in the original research is **not included or redistributed** in this repository.
-
-The notebook expects a local archive at:
-
-```text
-data/nasdaq_closing_auction.tar
-```
-
-containing daily `*.csv.gz` files with auction snapshots. The public notebook has all execution outputs cleared.
-
-This keeps the repository focused on the research process and code while respecting data-redistribution constraints.
 
 ## Research design
 
@@ -83,9 +58,43 @@ Model complexity is introduced gradually:
 
 The final test set is not used for feature selection, hyperparameter tuning, or model architecture decisions.
 
-## Notes
+## Tech stack
 
-This repository is a **public portfolio adaptation** of a larger private research exercise. It contains my code and methodology only; it does not include the original task materials, recruiter/process documents, source-data download links, or the underlying dataset.
+Python, Pandas, NumPy, scikit-learn, XGBoost, Jupyter
+
+## Quick start
+
+```bash
+git clone https://github.com/sohanHajra/nasdaq-closing-auction-research.git
+cd nasdaq-closing-auction-research
+python -m venv .venv
+pip install -r requirements.txt
+```
+
+The original dataset is not distributed with this repository. To run the notebook with a compatible dataset, place the local archive at:
+
+```text
+data/nasdaq_closing_auction.tar
+```
+
+The archive should contain daily `*.csv.gz` auction-snapshot files with the fields used by the notebook. See [`data/README.md`](data/README.md) for the expected data setup.
+
+## Repository structure
+
+```text
+.
+├── notebooks/
+│   └── closing_auction_forecasting.ipynb
+├── data/
+│   └── README.md
+├── requirements.txt
+├── .gitignore
+└── README.md
+```
+
+## Public-version note
+
+This repository is a public portfolio adaptation of a larger private research exercise. It contains my code and methodology, while excluding the original task materials, source-data download links, dataset, and private dataset-specific execution outputs.
 
 ## Author
 
